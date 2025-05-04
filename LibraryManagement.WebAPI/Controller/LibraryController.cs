@@ -74,7 +74,7 @@ namespace LibraryManagement.WebAPI.Controller
         }
         // GET: api/library/search?title=someTitle
         [HttpGet("search")]
-        public IActionResult SearchBooks(string title)
+        public IActionResult SearchBooks([FromQuery] string title)
         {
             var books = _context.Books.Where(b => b.Title != null && b.Title.Contains(title)).ToList() ?? new List<Book>();
             if (books.Count == 0)
